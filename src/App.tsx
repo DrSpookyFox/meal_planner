@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import InputField from "./components/InputField";
+import IngredientList from "./components/IngredientList";
 import "./App.css";
 import { Ingredient } from "./model";
 
@@ -28,6 +29,7 @@ const App: React.FC = () => {
         setIngredient={setIngredient}
         handleAdd={handleAdd}
       />
+    <IngredientList ingredients={ingredients} setIngredients={setIngredients}/>
     </div>
   );
 };

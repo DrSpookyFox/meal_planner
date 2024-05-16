@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./styles.css";
 import { FunctionLikeDeclaration } from "typescript";
 
@@ -8,9 +8,15 @@ interface Props {
   handleAdd: (e: React.FormEvent) => void; 
 }
 const InputField = ({ ingredient, setIngredient, handleAdd}: Props) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
   return (
-    <form className="Input" onSubmit={handleAdd}>
+    <form className="Input" onSubmit={(e)=>{
+      handleAdd(e)
+      inputRef.current?.blur();
+      }}>
       <input
+        ref={inputRef}
         type="input"
         value={ingredient}
         onChange={(e) => setIngredient(e.target.value)}
